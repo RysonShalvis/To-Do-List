@@ -1,0 +1,66 @@
+.fa-trash {
+    color: rgb(240, 66, 66);
+
+}
+
+.fa-check {
+    color: green;
+    pointer-events: none;
+}
+
+.fa-plus-square {
+    color: rgb(56, 166, 202);
+    pointer-events: none;
+    font-size: 20px;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    font-size: 25px;
+    height: 25px;
+    width: 400px;
+    border-style: solid;
+    border-width: 2px;
+    margin: 20px 15px;
+}
+
+ul {
+    margin-top: 50px;
+}
+
+.delete, .completed {
+    background-color: white;
+    position: relative;
+    top: -5px;
+    height: 25px;
+    width: 50px;
+    border-width: 1px;
+    outline: none;
+}
+
+.delete:hover, .completed:hover {
+    border-width: 2px;
+}
+
+#todo {
+    height: 25px;
+    width: 400px;
+    font-size: 25px;
+    border-width: 2px;
+    
+}
+
+#submit {
+    position: relative;
+    top: -2px;
+    height: 30px;
+    width: 50px;
+    background-color: white;
+    outline: none;
+}
+
+#todo-label {
+    font-size: 25px;
+}
