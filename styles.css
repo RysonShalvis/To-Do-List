@@ -23,7 +23,7 @@
     width: 400px;
     border-style: solid;
     border-width: 2px;
-    margin: 20px 15px;
+    margin: 20px auto;
 }
 
 ul {
@@ -54,13 +54,22 @@ ul {
 
 #submit {
     position: relative;
-    top: -2px;
     height: 30px;
     width: 50px;
     background-color: white;
     outline: none;
+    margin-left: 5px;
+}
+
+#submit:hover {
+    border-width: 3px;
 }
 
 #todo-label {
     font-size: 25px;
+}
+
+.todo-container {
+    display: flex;
+    justify-content: center;
 }
