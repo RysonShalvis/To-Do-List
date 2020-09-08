@@ -1,5 +1,6 @@
 .fa-trash {
     color: rgb(240, 66, 66);
+    pointer-events: none;
 
 }
 
