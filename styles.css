@@ -88,11 +88,14 @@ ul {
     to {top: 100px; opacity: 0; transform: rotate(20deg);}
 }
 
-@keyframes completeItem {
-    from {}
-}
 
 .animate-delete {
     position: relative;
     animation: deleteItem 1s forwards;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }

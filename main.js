@@ -4,14 +4,22 @@ const todo = document.querySelector('#todo');
 const submitButton = document.querySelector('#submit');
 const list = document.querySelector('.list');
 const filterOption = document.querySelector('#option-filter');
+const saveButton = document.querySelector('#save');
+const loadButton = document.querySelector('#load');
+const deleteButton = document.querySelector('#delete-stuff');
+let objLoad = false;
 let allItems = [];
+let itemsInnerText = [];
+let storageItems = [];
 
 //event listeners
 document.addEventListener('keyup',addTodo);
 submitButton.addEventListener('click', addTodo);
 list.addEventListener('click', deleteItem);
-filterOption.addEventListener('click', filterItems)
-
+filterOption.addEventListener('click', filterItems);
+saveButton.addEventListener('click', saveToStorage);
+loadButton.addEventListener('click', retrieveFromStorage);
+deleteButton.addEventListener('click', deleteStorage);
 //functions
 function addTodo () {
     if (todo.value) {
@@ -22,6 +30,8 @@ function addTodo () {
         list.appendChild(listItem);
             todo.value = ''; 
             allItems.push(listItem);
+            itemsInnerText.push(listItem.innerText);
+         
         }
     }
 }
@@ -66,5 +76,39 @@ function filterItems () {
             } 
         })    
     }
+}
+
+function saveToStorage () {
+    let str = JSON.stringify(itemsInnerText)
+    localStorage.setItem('all items',str);
+    objLoad = false;
+}
+
+function retrieveFromStorage() {
+    let obj = JSON.parse(localStorage.getItem('all items'));
+    
+    console.log(obj);
+    if (objLoad === false) {
+        while (list.firstChild) {
+            list.removeChild(list.firstChild);
+        }
+        obj.forEach(function (element) {
+            let listItem = document.createElement('li');
+            listItem.classList.add('list-item');
+            listItem.innerHTML = element + '<div class="item-container"><button class="delete"><i class="fas fa-trash"></i></button><button class="completed"><i class="fas fa-check"></i></button></div>';
+            list.appendChild(listItem);
+            allItems.push(listItem);
+            itemsInnerText.push(listItem.innerText);
+             }) 
+             
+             objLoad = true;
+             console.log(objLoad)
+        } else {
+            console.log('already loaded');
+        }
+};
+
+function deleteStorage () {
+    localStorage.removeItem('all items');
 }
 
