@@ -4,7 +4,7 @@ const todo = document.querySelector('#todo');
 const submitButton = document.querySelector('#submit');
 const list = document.querySelector('.list');
 const filterOption = document.querySelector('#option-filter');
-let items = [];
+let allItems = [];
 
 //event listeners
 document.addEventListener('keyup',addTodo);
@@ -21,7 +21,7 @@ function addTodo () {
         listItem.innerHTML = todo.value + '<div class="item-container"><button class="delete"><i class="fas fa-trash"></i></button><button class="completed"><i class="fas fa-check"></i></button></div>';
         list.appendChild(listItem);
             todo.value = ''; 
-            items.push(listItem);
+            allItems.push(listItem);
         }
     }
 }
@@ -44,12 +44,12 @@ function deleteItem(event) {
 
 function filterItems () {
     if (filterOption.value === 'all') {
-        items.forEach(function(element) {
+        allItems.forEach(function(element) {
            element.style.display = 'flex';
         }) 
     }
     if (filterOption.value === 'completed') {
-        items.forEach(function(element) {
+        allItems.forEach(function(element) {
             if (element.classList.contains('is-completed')) {
             element.style.display = 'flex';  
             } else {
@@ -58,7 +58,7 @@ function filterItems () {
         })    
     }
     if (filterOption.value === 'uncompleted') {
-        items.forEach(function(element) {
+        allItems.forEach(function(element) {
             if (element.classList.contains('is-completed') !== true) {
             element.style.display = 'flex';  
             } else {
