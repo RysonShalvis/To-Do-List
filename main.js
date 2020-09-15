@@ -16,7 +16,7 @@ let storageItems = [];
 document.addEventListener('keyup',addTodo);
 submitButton.addEventListener('click', addTodo);
 list.addEventListener('click', deleteItem);
-filterOption.addEventListener('click', filterItems);
+filterOption.addEventListener('change', filterItems);
 saveButton.addEventListener('click', saveToStorage);
 loadButton.addEventListener('click', retrieveFromStorage);
 deleteButton.addEventListener('click', deleteStorage);
@@ -79,19 +79,20 @@ function filterItems () {
 }
 
 function saveToStorage () {
+    localStorage.clear;
+    console.log(localStorage);
     let str = JSON.stringify(itemsInnerText)
     localStorage.setItem('all items',str);
     objLoad = false;
+    console.log(objLoad)
 }
 
 function retrieveFromStorage() {
-    let obj = JSON.parse(localStorage.getItem('all items'));
-    
-    console.log(obj);
     if (objLoad === false) {
         while (list.firstChild) {
             list.removeChild(list.firstChild);
         }
+        let obj = JSON.parse(localStorage.getItem('all items'));
         obj.forEach(function (element) {
             let listItem = document.createElement('li');
             listItem.classList.add('list-item');
@@ -105,6 +106,7 @@ function retrieveFromStorage() {
              console.log(objLoad)
         } else {
             console.log('already loaded');
+            objLoad = false;
         }
 };
 
